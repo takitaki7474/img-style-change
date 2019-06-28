@@ -10,7 +10,7 @@ import math
 from numpy import random
 from PIL import Image
 
-uses_device = 0			# GPU#0を使用
+uses_device = -1			# GPU#0を使用
 figure_rate = 0.02		# 画像形状の割合
 figure_layers = ["conv3_3", "conv4_3"]	# 7層目、10層目を画像形状抽出用に使う
 style_layers = ["conv1_2", "conv2_2", "conv3_3", "conv4_3"]	# 2層目〜10層目をスタイル抽出用に使う
@@ -38,7 +38,7 @@ class Generate_L(chainer.Link):
 		# スタイル画像からスタイル行列を取得
 		vgg2 = vgg_model.extract([img_style], layers=style_layers, size=img_style.size)
 		self.style_matrix = self.get_matrix(vgg2)
-		
+
 		# 画像データとなるパラメーターを作成
 		w = chainer.initializers.Normal()
 		with self.init_scope():
@@ -95,7 +95,7 @@ class ANAASUpdater(training.StandardUpdater):
 	@property
 	def is_new_epoch(self):
 		return False
-		
+
 	def finalize(self):
 		pass
 
@@ -150,5 +150,3 @@ data[:,:,1] = (dst[1] + 116.779).clip(0,255)
 data[:,:,2] = (dst[0] + 123.68).clip(0,255)
 himg = Image.fromarray(data, 'RGB')
 himg.save(output_file)
-
-
