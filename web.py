@@ -5,7 +5,7 @@ import os
 import io
 import numpy as np
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="./src",template_folder="./templates")
 
 app.config["DEBUG"] = True
 
