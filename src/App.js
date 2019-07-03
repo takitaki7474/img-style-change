@@ -1,10 +1,13 @@
 import React from 'react';
+import Header from './Header';
+import UploadBtn from './UploadBtn';
 
 class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>aaaa</h1>
+        <Header />
+        <UploadBtn />
       </div>
     );
   }
