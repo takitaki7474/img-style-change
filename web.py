@@ -15,7 +15,7 @@ UPLOAD_FOLDER = './static/images'
 def index():
     return render_template("index.html")
 
-@app.route("/post", methods=["POST"])
+@app.route("/post", methods=["GET","POST"])
 def post():
     if request.method == "POST":
         if not request.files["file-submit"].filename == "":
@@ -28,9 +28,9 @@ def post():
             raw_img_url = os.path.join(UPLOAD_FOLDER, "raw_" + secure_filename(img_file.filename))
             cv2.imwrite(raw_img_url, img)
         else:
-            pass
+            print("aaaa")
     else:
-        pass
+        print("bbbb")
 
     return render_template("img_changed.html", sample_img=raw_img_url)
 
