@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { withRouter } from 'react-router';
 
 class UploadBtn extends React.Component {
 
@@ -11,6 +12,7 @@ class UploadBtn extends React.Component {
     };
     this.handleInputValue = this.handleInputValue.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.SampleFunc = this.SampleFunc.bind(this)
   }
 
   handleInputValue(e) {
@@ -35,6 +37,8 @@ class UploadBtn extends React.Component {
         },
       }
     ).then((result)=>{
+      this.props.history.push('/post')
+      console.log("kkkkkkk")
       console.log(this.props)
       this.setState({isLoading:false});
     }).catch(()=>{
@@ -44,14 +48,20 @@ class UploadBtn extends React.Component {
 
   }
 
+  SampleFunc() {
+    this.props.history.push('/post');
+  }
+
   render() {
     return(
       <div>
         <input type="file" name="file-submit" onChange={this.handleInputValue} />
         <input type="button" onClick={this.handleSubmit} value="Submit"/>
+        <button onClick={this.SampleFunc}>あああ</button>
+
       </div>
     );
   }
 }
 
-export default UploadBtn;
+export default withRouter(UploadBtn);

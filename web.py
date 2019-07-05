@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from werkzeug import secure_filename
 import cv2
 import os
@@ -20,6 +20,7 @@ def post():
     if request.method == "POST":
         print("cccc")
         if not request.files["file-submit"].filename == "":
+            dic = {}
             img_file = request.files["file-submit"]
             f = img_file.stream.read()
             bin_data = io.BytesIO(f)
@@ -28,13 +29,15 @@ def post():
 
             raw_img_url = os.path.join(UPLOAD_FOLDER, "raw2_" + secure_filename(img_file.filename))
             cv2.imwrite(raw_img_url, img)
+            dic["img_url"] = raw_img_url
             print(raw_img_url)
         else:
             print("aaaa")
     else:
         print("bbbb")
 
-    return render_template("img_changed.html")#sample_img=raw_img_url
+    return render_template("img_changed.html",sample_img=raw_img_url)
+    #return jsonify(dic)
 
 
 if __name__=="__main__":

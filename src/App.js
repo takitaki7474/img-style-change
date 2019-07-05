@@ -1,16 +1,43 @@
 import React from 'react';
 import Header from './Header';
-//import UploadBtn from './UploadBtn';
+import UploadBtn from './UploadBtn';
 import SelectStyleBtn from './SelectStyleBtn'
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-class App extends React.Component {
+
+class Post extends React.Component {
+  render() {
+    return(
+      <div>
+        <Header />
+      </div>
+    );
+  }
+}
+
+class Home extends React.Component {
   render() {
     return (
       <div>
         <Header />
-        {/*<UploadBtn />*/}
+        <UploadBtn />
         <SelectStyleBtn />
       </div>
+    );
+  }
+}
+
+class App extends React.Component {
+  render() {
+    return(
+      <BrowserRouter>
+        <div>
+          <Switch>
+            <Route exact path={'/'} component={Home}/>
+            <Route path={'/post'} component={Post}/>
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
   }
 }
