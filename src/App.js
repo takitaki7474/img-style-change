@@ -1,13 +1,15 @@
 import React from 'react';
 import Header from './Header';
-import UploadBtn from './UploadBtn';
+//import UploadBtn from './UploadBtn';
+import SelectStyleBtn from './SelectStyleBtn'
 
 class App extends React.Component {
   render() {
     return (
       <div>
         <Header />
-        <UploadBtn />
+        {/*<UploadBtn />*/}
+        <SelectStyleBtn />
       </div>
     );
   }

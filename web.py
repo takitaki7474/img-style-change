@@ -9,7 +9,7 @@ app = Flask(__name__, static_folder="./src",template_folder="./templates")
 
 app.config["DEBUG"] = True
 
-UPLOAD_FOLDER = './static/images'
+UPLOAD_FOLDER = './src/images'
 
 @app.route("/")
 def index():
@@ -18,6 +18,7 @@ def index():
 @app.route("/post", methods=["GET","POST"])
 def post():
     if request.method == "POST":
+        print("cccc")
         if not request.files["file-submit"].filename == "":
             img_file = request.files["file-submit"]
             f = img_file.stream.read()
@@ -25,15 +26,15 @@ def post():
             file_bytes = np.asarray(bytearray(bin_data.read()), dtype=np.uint8)
             img = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
 
-            raw_img_url = os.path.join(UPLOAD_FOLDER, "raw_" + secure_filename(img_file.filename))
+            raw_img_url = os.path.join(UPLOAD_FOLDER, "raw2_" + secure_filename(img_file.filename))
             cv2.imwrite(raw_img_url, img)
+            print(raw_img_url)
         else:
             print("aaaa")
     else:
         print("bbbb")
 
-    return render_template("img_changed.html", sample_img=raw_img_url)
-
+    return render_template("img_changed.html")#sample_img=raw_img_url
 
 
 if __name__=="__main__":

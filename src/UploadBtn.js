@@ -24,7 +24,7 @@ class UploadBtn extends React.Component {
   handleSubmit() {
     this.setState({isLoading: true});
     const params = new FormData()
-    params.append('file',this.state.content)
+    params.append('file-submit',this.state.content)
 
     axios.post(
       'http://localhost:5000/post',
@@ -35,6 +35,7 @@ class UploadBtn extends React.Component {
         },
       }
     ).then((result)=>{
+      console.log(this.props)
       this.setState({isLoading:false});
     }).catch(()=>{
       console.log('uploading...');
@@ -47,7 +48,7 @@ class UploadBtn extends React.Component {
     return(
       <div>
         <input type="file" name="file-submit" onChange={this.handleInputValue} />
-        <input type="button" onClick={this.handleSubmit} />
+        <input type="button" onClick={this.handleSubmit} value="Submit"/>
       </div>
     );
   }
