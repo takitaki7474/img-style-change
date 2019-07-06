@@ -4,6 +4,7 @@ import cv2
 import os
 import io
 import numpy as np
+import time
 
 app = Flask(__name__, static_folder="./src",template_folder="./templates")
 
@@ -29,6 +30,7 @@ def post():
 
             raw_img_url = os.path.join(UPLOAD_FOLDER, "raw2_" + secure_filename(img_file.filename))
             cv2.imwrite(raw_img_url, img)
+            time.sleep(5)
             dic["img_url"] = raw_img_url
             print(raw_img_url)
         else:

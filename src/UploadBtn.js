@@ -13,7 +13,6 @@ class UploadBtn extends React.Component {
     };
     this.handleInputValue = this.handleInputValue.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.SampleFunc = this.SampleFunc.bind(this)
     this.setImgChange = this.setImgChange.bind(this)
   }
 
@@ -22,7 +21,6 @@ class UploadBtn extends React.Component {
     this.setState({
       content: files[0]
     });
-    console.log(files[0])
   }
 
   handleSubmit() {
@@ -55,17 +53,21 @@ class UploadBtn extends React.Component {
     console.log(this.state.img_url);
   }
 
-  SampleFunc() {
-    this.props.history.push('/post');
-  }
-
   render() {
+    let loading;
+    if(this.state.isLoading) {
+      loading = (
+        <h1>
+          loading...
+        </h1>
+      );
+    }
     return(
       <div>
         <input type="file" name="file-submit" onChange={this.handleInputValue} />
         <input type="button" onClick={this.handleSubmit} value="Submit"/>
-        <button onClick={this.SampleFunc}>あああ</button>
         <img src={this.state.img_url}/>
+        {loading}
 
       </div>
     );

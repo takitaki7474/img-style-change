@@ -35,7 +35,7 @@ class App extends React.Component {
         <div>
           <Switch>
             <Route exact path={'/'} component={Home}/>
-            <Route path={'/post'} component={Post}/>
+            {/*<Route path={'/post'} component={Post}/>*/}
           </Switch>
         </div>
       </BrowserRouter>
