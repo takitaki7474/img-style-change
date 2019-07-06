@@ -10,6 +10,7 @@ class Post extends React.Component {
     return(
       <div>
         <Header />
+        <UploadBtn />
       </div>
     );
   }

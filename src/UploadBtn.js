@@ -8,11 +8,13 @@ class UploadBtn extends React.Component {
     super(props);
     this.state = {
       content: '',
-      isLoading: false
+      isLoading: false,
+      img_url: ''
     };
     this.handleInputValue = this.handleInputValue.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.SampleFunc = this.SampleFunc.bind(this)
+    this.setImgChange = this.setImgChange.bind(this)
   }
 
   handleInputValue(e) {
@@ -36,16 +38,21 @@ class UploadBtn extends React.Component {
           'content-type': 'multipart/form-data',
         },
       }
-    ).then((result)=>{
-      this.props.history.push('/post')
-      console.log("kkkkkkk")
-      console.log(this.props)
+    ).then(result =>{
       this.setState({isLoading:false});
-    }).catch(()=>{
+      this.setImgChange(result.data.img_url);
+      //this.props.history.push('/post');
+    }).catch(error =>{
       console.log('uploading...');
       this.setState({isLoading:false});
     });
 
+  }
+
+  setImgChange(url) {
+    this.setState({img_url: url});
+    console.log(url);
+    console.log(this.state.img_url);
   }
 
   SampleFunc() {
@@ -58,6 +65,7 @@ class UploadBtn extends React.Component {
         <input type="file" name="file-submit" onChange={this.handleInputValue} />
         <input type="button" onClick={this.handleSubmit} value="Submit"/>
         <button onClick={this.SampleFunc}>あああ</button>
+        <img src={this.state.img_url}/>
 
       </div>
     );

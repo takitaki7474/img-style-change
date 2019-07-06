@@ -9,7 +9,7 @@ app = Flask(__name__, static_folder="./src",template_folder="./templates")
 
 app.config["DEBUG"] = True
 
-UPLOAD_FOLDER = './src/images'
+UPLOAD_FOLDER = '/src/images'
 
 @app.route("/")
 def index():
@@ -36,8 +36,8 @@ def post():
     else:
         print("bbbb")
 
-    return render_template("img_changed.html",sample_img=raw_img_url)
-    #return jsonify(dic)
+    #return render_template("img_changed.html",sample_img=raw_img_url)
+    return jsonify(dic)
 
 
 if __name__=="__main__":
