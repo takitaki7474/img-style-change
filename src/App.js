@@ -13,7 +13,7 @@ class Post extends React.Component {
   }
 }
 
-class Home extends React.Component {
+class Body extends React.Component {
   render() {
     return (
       <div>
@@ -29,7 +29,7 @@ class App extends React.Component {
     return(
         <div>
           <Header />
-          <Home />
+          <Body />
         </div>
     );
   }

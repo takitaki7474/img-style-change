@@ -20,7 +20,6 @@ def index():
 @app.route("/post", methods=["GET","POST"])
 def post():
     if request.method == "POST":
-        print("cccc")
         if not request.files["file-submit"].filename == "":
             dic = {}
             img_file = request.files["file-submit"]
@@ -35,9 +34,9 @@ def post():
             dic["img_url"] = raw_img_url
             print(raw_img_url)
         else:
-            print("aaaa")
+            pass
     else:
-        print("bbbb")
+        pass
 
     #return render_template("img_changed.html",sample_img=raw_img_url)
     return jsonify(dic)

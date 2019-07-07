@@ -74,10 +74,11 @@ class SelectStyleBtn extends React.Component {
 
     return(
       <div>
+        <img src={this.state.style_url}/>
         <div onClick={this.handleClickStyle}>
           <p>スタイルを選択</p>
         </div>
-        <img src={this.state.style_url}/>
+
         <UploadBtn styleImageURL={this.state.style_url}/>
         {modal}
 
