@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import { withRouter } from 'react-router';
 
 class UploadBtn extends React.Component {
 
@@ -68,10 +67,9 @@ class UploadBtn extends React.Component {
         <input type="button" onClick={this.handleSubmit} value="Submit"/>
         <img src={this.state.img_url}/>
         {loading}
-
       </div>
     );
   }
 }
 
-export default withRouter(UploadBtn);
+export default UploadBtn;

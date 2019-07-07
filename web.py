@@ -10,7 +10,8 @@ app = Flask(__name__, static_folder="./src",template_folder="./templates")
 
 app.config["DEBUG"] = True
 
-UPLOAD_FOLDER = '/src/images'
+#UPLOAD_FOLDER = './src/images'
+UPLOAD_FOLDER = './src/save_images'
 
 @app.route("/")
 def index():
@@ -28,7 +29,7 @@ def post():
             file_bytes = np.asarray(bytearray(bin_data.read()), dtype=np.uint8)
             img = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
 
-            raw_img_url = os.path.join(UPLOAD_FOLDER, "raw2_" + secure_filename(img_file.filename))
+            raw_img_url = os.path.join(UPLOAD_FOLDER, "raw_" + secure_filename(img_file.filename))
             cv2.imwrite(raw_img_url, img)
             time.sleep(5)
             dic["img_url"] = raw_img_url
