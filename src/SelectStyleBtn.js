@@ -1,4 +1,5 @@
 import React from 'react';
+import UploadBtn from './UploadBtn';
 
 class SelectStyleBtn extends React.Component {
   constructor(props) {
@@ -77,7 +78,9 @@ class SelectStyleBtn extends React.Component {
           <p>スタイルを選択</p>
         </div>
         <img src={this.state.style_url}/>
+        <UploadBtn styleImageURL={this.state.style_url}/>
         {modal}
+
       </div>
     );
   }
