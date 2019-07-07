@@ -3,9 +3,14 @@ import React from 'react';
 class SelectStyleBtn extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {isModalOpen: false};
+    this.state = {
+      isModalOpen: false,
+      style_url: ''
+    };
     this.handleClickStyle = this.handleClickStyle.bind(this);
     this.handleClickClose = this.handleClickClose.bind(this);
+    this.selectStyle = this.selectStyle.bind(this);
+    this.styleList = [];
   }
 
   handleClickStyle() {
@@ -16,8 +21,13 @@ class SelectStyleBtn extends React.Component {
     this.setState({isModalOpen: false});
   }
 
+  selectStyle(imgCount) {
+    this.setState({style_url: this.styleList[imgCount].img_src});
+    this.handleClickClose();
+  }
+
   render() {
-    const styleList = [
+    this.styleList = [
       {
         title: "タイトル1",
         img_src: "/src/style/style.png"
@@ -41,16 +51,18 @@ class SelectStyleBtn extends React.Component {
     ];
 
     let modal;
+    let count = -1;
     if(this.state.isModalOpen) {
       modal = (
         <div className="modal">
           <div className="modal-inner">
             <button className="modal-close-btn" onClick={this.handleClickClose}>とじる</button>
-            {styleList.map((styleItem)=>{
+            {this.styleList.map((styleItem)=>{
+              count++;
               return (
                 <div className="modal-style-box">
                   <div className="modal-style-title">{styleItem.title}</div>
-                  <img className="modal-style-img" src={styleItem.img_src}/>
+                  <img className="modal-style-img" src={styleItem.img_src} onClick={this.selectStyle.bind(this, count)}/>
                 </div>
               );
             })}
