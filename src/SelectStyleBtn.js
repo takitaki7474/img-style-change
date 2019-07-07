@@ -21,8 +21,13 @@ class SelectStyleBtn extends React.Component {
     if(this.state.isModalOpen) {
       modal = (
         <div className="modal">
-          <h2>aaaaa</h2>
-          <button onClick={this.handleClickClose}>閉じる</button>
+          <div className="modal-inner">
+            <button className="modal-close-btn" onClick={this.handleClickClose}>閉じる</button>
+            <div className="modal-style-box">
+              <div className="modal-style-title">タイトル</div>
+              <img className="modal-style-img" src="/src/style/style_1.png"/>
+            </div>
+          </div>
         </div>
       );
     }
