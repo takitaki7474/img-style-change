@@ -3,24 +3,19 @@ import React from 'react';
 class Introduction extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      introStateStyleURL: '',
-      isStyle: false,
-      introStateUploadedURL: '',
-      isUploaded: false
-    }
 
   }
 
   render() {
-    /*
+
     let displayStyleImg;
     let displayUploadedImg;
-    if(this.state.introStateStyleURL != '') {
-      this.setState({isStyle: true});
-    }
 
-    console.log(this.state.)*/
+    console.log('イントロスタイル' + this.props.styleURL);
+    console.log('イントロアップロード' + this.props.uploadedURL);
+    console.log(this.props.isStyle);
+    console.log(this.props.isUploaded);
+
     return(
       <div>
         <div>aaa</div>

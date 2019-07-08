@@ -9,7 +9,9 @@ class Body extends React.Component {
     super(props);
     this.state = {
       bodyStateStyleURL: '',
-      bodyStateUploadedURL: ''
+      bodyStateUploadedURL: '',
+      isStyle: false,
+      isUploaded: false
     }
     this.inputStyleURL = this.inputStyleURL.bind(this);
     this.inputUploadedURL = this.inputUploadedURL.bind(this);
@@ -18,17 +20,19 @@ class Body extends React.Component {
   inputStyleURL(url) {
     console.log('認識スタイルURL' + url);
     this.setState({bodyStateStyleURL: url});
+    this.setState({isStyle: true});
   }
 
   inputUploadedURL(url) {
     console.log('認識アップロードURL' + url)
     this.setState({bodyStateUploadedURL: url});
+    this.setState({isUploaded: true});
   }
 
   render(){
     return(
       <div>
-        <Introduction styleURL={this.state.bodyStateStyleURL uploadedURL={this.state.bodyStateUploadedURL}/>
+        <Introduction styleURL={this.state.bodyStateStyleURL} uploadedURL={this.state.bodyStateUploadedURL} isStyle={this.state.isStyle} isUploaded={this.state.isUploaded}/>
         <SelectStyleBtn styleURL={(url)=>{this.inputStyleURL(url)}} />
         <UploadBtn uploadedURL={(url)=>{this.inputUploadedURL(url)}}/>
         <StyleChangeBtn styleURL={this.state.bodyStateStyleURL} uploadedURL={this.state.bodyStateUploadedURL}/>
