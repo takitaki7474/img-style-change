@@ -49,8 +49,7 @@ class UploadBtn extends React.Component {
 
   setImgChange(url) {
     this.setState({img_url: url});
-    console.log(url);
-    console.log(this.state.img_url);
+    this.props.uploadedURL(url);
   }
 
   render() {
@@ -66,8 +65,8 @@ class UploadBtn extends React.Component {
       <div>
         <input type="file" name="file-submit" onChange={this.handleInputValue} />
         <input type="button" onClick={this.handleSubmit} value="Submit"/>
-        <img src={this.state.img_url}/>
-        <StyleChangeBtn styleImageURL={this.props.styleImageURL} uploadedURL={this.state.img_url}/>
+        {/*<img src={this.state.img_url}/>*/}
+        {/*<StyleChangeBtn styleImageURL={this.props.styleImageURL} uploadedURL={this.state.img_url}/>*/}
         {loading}
       </div>
     );

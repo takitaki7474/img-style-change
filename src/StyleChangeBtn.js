@@ -6,7 +6,7 @@ class StyleChangeBtn extends React.Component {
   }
 
   render(){
-    console.log(this.props.styleImageURL);
+    console.log(this.props.styleURL);
     console.log(this.props.uploadedURL);
     return(
       <div>
