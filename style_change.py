@@ -9,6 +9,7 @@ import sys
 import math
 from numpy import random
 from PIL import Image
+import datetime
 
 uses_device = -1			# GPU#0を使用
 figure_rate = 0.02		# 画像形状の割合
@@ -106,6 +107,7 @@ class ANAASUpdater(training.StandardUpdater):
 		optimizer.update(optimizer.target)
 
 # 入力ファイル
+"""
 original_file = 'original.png'
 if len(sys.argv) >= 2:
 	original_file = str(sys.argv[1])
@@ -117,36 +119,45 @@ output_file = 'result.png'
 if len(sys.argv) >= 4:
 	output_file = str(sys.argv[3])
 
-# 入力画像を開く
-original_img = Image.open(original_file).convert('RGB')
-# スタイル画像を開く
-style_img = Image.open(style_file).convert('RGB').resize(original_img.size)
+"""
 
-# モデルの作成
-model = Generate_L(original_img, style_img)
+def style_change(original_file, style_file):
+	# 入力画像を開く
+	original_img = Image.open(original_file).convert('RGB')
+	# スタイル画像を開く
+	style_img = Image.open(style_file).convert('RGB').resize(original_img.size)
 
-# Optimizerの作成
-optimizer = optimizers.Adam(alpha=5.0, beta1=0.9)
-optimizer.setup(model)
+	dt_now = datetime.datetime.now().strftime('%m%d%H%M%S')
 
-# デバイスを選択してTrainerを作成する
-updater = ANAASUpdater(optimizer, device=uses_device)
-trainer = training.Trainer(updater, (5000, 'iteration'), out="result")
-# ログを出力
-trainer.extend(extensions.LogReport())
-# 学習の進展を表示するようにする
-trainer.extend(extensions.ProgressBar(update_interval=1))
+	output_file = os.path.join("./src/changed_images","changed_img_" + dt_now + ".png")
 
-# 機械学習を実行する
-trainer.run()
+	# モデルの作成
+	model = Generate_L(original_img, style_img)
 
-# 学習結果を保存する
-data = np.zeros((original_img.size[0], original_img.size[1], 3), dtype=np.uint8)
-dst = model.W.data[0]  # BGRの画素データ
-if uses_device >= 0:
-	dst = chainer.cuda.to_cpu(dst)
-data[:,:,0] = (dst[2] + 103.939).clip(0,255)
-data[:,:,1] = (dst[1] + 116.779).clip(0,255)
-data[:,:,2] = (dst[0] + 123.68).clip(0,255)
-himg = Image.fromarray(data, 'RGB')
-himg.save(output_file)
+	# Optimizerの作成
+	optimizer = optimizers.Adam(alpha=5.0, beta1=0.9)
+	optimizer.setup(model)
+
+	# デバイスを選択してTrainerを作成する
+	updater = ANAASUpdater(optimizer, device=uses_device)
+	trainer = training.Trainer(updater, (5000, 'iteration'), out="result")
+	# ログを出力
+	trainer.extend(extensions.LogReport())
+	# 学習の進展を表示するようにする
+	trainer.extend(extensions.ProgressBar(update_interval=1))
+
+	# 機械学習を実行する
+	trainer.run()
+
+	# 学習結果を保存する
+	data = np.zeros((original_img.size[0], original_img.size[1], 3), dtype=np.uint8)
+	dst = model.W.data[0]  # BGRの画素データ
+	if uses_device >= 0:
+		dst = chainer.cuda.to_cpu(dst)
+	data[:,:,0] = (dst[2] + 103.939).clip(0,255)
+	data[:,:,1] = (dst[1] + 116.779).clip(0,255)
+	data[:,:,2] = (dst[0] + 123.68).clip(0,255)
+	himg = Image.fromarray(data, 'RGB')
+	himg.save(output_file)
+
+	return output_file

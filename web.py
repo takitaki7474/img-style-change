@@ -5,6 +5,7 @@ import os
 import io
 import numpy as np
 import time
+import style_change
 
 app = Flask(__name__, static_folder="./src",template_folder="./templates")
 
@@ -41,6 +42,14 @@ def post():
     #return render_template("img_changed.html",sample_img=raw_img_url)
     return jsonify(dic)
 
+
+@app.route("/change_style", methods=["GET"])
+def change_style():
+    dic = {}
+    urls = request.query_string.decode('utf-8').split('&')
+    dic["a"] = urls
+
+    return jsonify(dic)
 
 if __name__=="__main__":
     app.run()

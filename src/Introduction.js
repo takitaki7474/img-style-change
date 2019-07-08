@@ -3,7 +3,6 @@ import React from 'react';
 class Introduction extends React.Component {
   constructor(props) {
     super(props);
-
   }
 
   render() {
