@@ -33,9 +33,11 @@ class Body extends React.Component {
     return(
       <div>
         <Introduction styleURL={this.state.bodyStateStyleURL} uploadedURL={this.state.bodyStateUploadedURL} isStyle={this.state.isStyle} isUploaded={this.state.isUploaded}/>
-        <SelectStyleBtn styleURL={(url)=>{this.inputStyleURL(url)}} />
-        <UploadBtn uploadedURL={(url)=>{this.inputUploadedURL(url)}}/>
-        <StyleChangeBtn styleURL={this.state.bodyStateStyleURL} uploadedURL={this.state.bodyStateUploadedURL}/>
+        <div className="button-items-box">
+          <SelectStyleBtn styleURL={(url)=>{this.inputStyleURL(url)}} />
+          <UploadBtn uploadedURL={(url)=>{this.inputUploadedURL(url)}}/>
+          <StyleChangeBtn styleURL={this.state.bodyStateStyleURL} uploadedURL={this.state.bodyStateUploadedURL}/>
+        </div>
       </div>
     );
   }

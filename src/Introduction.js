@@ -13,23 +13,25 @@ class Introduction extends React.Component {
 
     if (this.props.isStyle) {
       displayStyleImg = (
-        <div>
-          <img src={this.props.styleURL}/>
+        <div className="selected-img">
+          <p className="selected-img-text">Style</p>
+          <img className="display-img" src={this.props.styleURL}/>
         </div>
       );
     }
 
     if (this.props.isUploaded) {
       displayUploadedImg = (
-        <div>
-          <img src={this.props.uploadedURL}/>
+        <div className="selected-img">
+          <p className="selected-img-text">Target Image</p>
+          <img className="display-img" src={this.props.uploadedURL}/>
         </div>
       );
     }
 
     if ((!this.props.isStyle)&&(!this.props.isUploaded)) {
       displayMain = (
-        <div>
+        <div className="intro-main">
           <div>メイン</div>
         </div>
       );
@@ -41,7 +43,7 @@ class Introduction extends React.Component {
     console.log(this.props.isUploaded);
 
     return(
-      <div>
+      <div className="body-main">
         {displayStyleImg}
         {displayUploadedImg}
         {displayMain}

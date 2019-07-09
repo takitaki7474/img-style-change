@@ -62,9 +62,9 @@ class UploadBtn extends React.Component {
       );
     }
     return(
-      <div>
-        <input type="file" name="file-submit" onChange={this.handleInputValue} />
-        <input type="button" onClick={this.handleSubmit} value="Submit"/>
+      <div className="upload-form">
+        <input className="form-button" type="file" name="file-submit" onChange={this.handleInputValue} />
+        <input className="button-item" type="button" onClick={this.handleSubmit} value="アップロード"/>
         {/*<img src={this.state.img_url}/>*/}
         {/*<StyleChangeBtn styleImageURL={this.props.styleImageURL} uploadedURL={this.state.img_url}/>*/}
         {loading}
