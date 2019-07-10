@@ -160,9 +160,13 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  padding-bottom: 30px;
+  padding-top: 20px;
+  border-bottom: 3px solid #CCCCCC;
 }
 
 .modal-style-title {
+  color: #000;
   font-size: 20px;
   margin: 5px;
 }
