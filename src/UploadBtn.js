@@ -20,6 +20,8 @@ class UploadBtn extends React.Component {
     var files = e.target.files;
     this.setState({
       content: files[0]
+    }, ()=>{
+      this.handleSubmit();
     });
   }
 
@@ -63,8 +65,11 @@ class UploadBtn extends React.Component {
     }
     return(
       <div className="upload-form">
-        <input className="form-button" type="file" name="file-submit" onChange={this.handleInputValue} />
-        <input className="button-item" type="button" onClick={this.handleSubmit} value="アップロード"/>
+        <label className="button-item">
+          アップロード
+          <input className="form-button" type="file" name="file-submit" onChange={this.handleInputValue} />
+        </label>
+        {/*}<input className="button-item" type="button" onClick={this.handleSubmit} value="アップロード"/>*/}
         {/*<img src={this.state.img_url}/>*/}
         {/*<StyleChangeBtn styleImageURL={this.props.styleImageURL} uploadedURL={this.state.img_url}/>*/}
         {loading}

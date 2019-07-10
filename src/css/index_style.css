@@ -116,8 +116,7 @@
 }
 
 .form-button {
-  width: 210px;
-  margin: 5px 0;
+  display: none;
 }
 
 /*モーダル*/
