@@ -46,8 +46,12 @@ def post():
 @app.route("/change_style", methods=["GET"])
 def change_style():
     dic = {}
-    urls = request.query_string.decode('utf-8').split('&')
-    dic["a"] = urls
+    #urls = request.query_string.decode('utf-8').split('&')
+    style_url = request.args.get("style_url")
+    uploaded_url = request.args.get("uploaded_url")
+    dic["style_url"] = style_url
+    dic["uploaded_url"] = uploaded_url
+    print(dic)
 
     return jsonify(dic)
 
