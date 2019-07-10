@@ -41,9 +41,8 @@ class UploadBtn extends React.Component {
     ).then(result =>{
       this.setState({isLoading:false});
       this.setImgChange(result.data.img_url);
-      //this.props.history.push('/post');
     }).catch(error =>{
-      console.log('uploading...');
+      console.log('uploading failure');
       this.setState({isLoading:false});
     });
 
@@ -69,9 +68,6 @@ class UploadBtn extends React.Component {
           アップロード
           <input className="form-button" type="file" name="file-submit" onChange={this.handleInputValue} />
         </label>
-        {/*}<input className="button-item" type="button" onClick={this.handleSubmit} value="アップロード"/>*/}
-        {/*<img src={this.state.img_url}/>*/}
-        {/*<StyleChangeBtn styleImageURL={this.props.styleImageURL} uploadedURL={this.state.img_url}/>*/}
         {loading}
       </div>
     );

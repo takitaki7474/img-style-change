@@ -118,7 +118,6 @@ if len(sys.argv) >= 3:
 output_file = 'result.png'
 if len(sys.argv) >= 4:
 	output_file = str(sys.argv[3])
-
 """
 
 def style_change(original_file, style_file):

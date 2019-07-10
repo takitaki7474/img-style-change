@@ -42,7 +42,6 @@
   font-weight: bold;
 }
 
-
 .body-main {
   display: flex;
   flex-direction: row;
@@ -60,8 +59,6 @@
   height: 440px;
   width: 33%;
 }
-
-
 
 .selected-img-text {
   font-weight: bold;

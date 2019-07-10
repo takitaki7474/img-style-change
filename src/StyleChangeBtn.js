@@ -28,7 +28,6 @@ class StyleChangeBtn extends React.Component {
         this.setState({isLoading: false},()=>{
           this.props.changedURL(result.data.changed_file_path);
         });
-        console.log(result);
       }).catch(error => {
         this.setState({isLoading: false});
       })

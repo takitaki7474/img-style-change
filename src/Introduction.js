@@ -60,15 +60,11 @@ class Introduction extends React.Component {
       );
     }
 
-    console.log('イントロスタイル' + this.props.styleURL);
-    console.log('イントロアップロード' + this.props.uploadedURL);
-    console.log(this.props.isStyle);
-    console.log(this.props.isUploaded);
-
     return(
       <div className="body-main">
         {displayStyleImg}
         {displayUploadedImg}
+        {displayChangedImg}
         {displayMain}
       </div>
     );
