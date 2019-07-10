@@ -25,7 +25,9 @@ class StyleChangeBtn extends React.Component {
           uploaded_url: this.props.uploadedURL
         }
       }).then(result =>{
-        this.setState({isLoading: false});
+        this.setState({isLoading: false},()=>{
+          this.props.changedURL(result.data.changed_file_path);
+        });
         console.log(result);
       }).catch(error => {
         this.setState({isLoading: false});

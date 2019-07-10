@@ -9,6 +9,7 @@ class Introduction extends React.Component {
 
     let displayStyleImg;
     let displayUploadedImg;
+    let displayChangedImg;
     let displayMain;
 
     if (this.props.isStyle) {
@@ -25,6 +26,15 @@ class Introduction extends React.Component {
         <div className="selected-img">
           <p className="selected-img-text">Target Image</p>
           <img className="display-img" src={this.props.uploadedURL}/>
+        </div>
+      );
+    }
+
+    if (this.props.isChanged) {
+      displayChangedImg = (
+        <div className="selected-img">
+          <p className="selected-img-text">Changed Image</p>
+          <img className="display-img" src={this.props.changedURL}/>
         </div>
       );
     }

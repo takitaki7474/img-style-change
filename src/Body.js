@@ -10,11 +10,14 @@ class Body extends React.Component {
     this.state = {
       bodyStateStyleURL: '',
       bodyStateUploadedURL: '',
+      bodyStateChangedURL:'',
       isStyle: false,
-      isUploaded: false
+      isUploaded: false,
+      isChanged: false
     }
     this.inputStyleURL = this.inputStyleURL.bind(this);
     this.inputUploadedURL = this.inputUploadedURL.bind(this);
+    this.inputChangedURL = this.inputChangedURL.bind(this);
   }
 
   inputStyleURL(url) {
@@ -24,19 +27,25 @@ class Body extends React.Component {
   }
 
   inputUploadedURL(url) {
-    console.log('認識アップロードURL' + url)
+    console.log('認識アップロードURL' + url);
     this.setState({bodyStateUploadedURL: url});
     this.setState({isUploaded: true});
+  }
+
+  inputChangedURL(url) {
+    console.log('認識スタイル変換後URL' + url);
+    this.setState({bodyStateChangedURL: url});
+    this.setState({isChanged: true});
   }
 
   render(){
     return(
       <div>
-        <Introduction styleURL={this.state.bodyStateStyleURL} uploadedURL={this.state.bodyStateUploadedURL} isStyle={this.state.isStyle} isUploaded={this.state.isUploaded}/>
+        <Introduction styleURL={this.state.bodyStateStyleURL} uploadedURL={this.state.bodyStateUploadedURL} changedURL={this.state.bodyStateChangedURL} isStyle={this.state.isStyle} isUploaded={this.state.isUploaded} isChanged={this.state.isChanged}/>
         <div className="button-items-box">
           <SelectStyleBtn styleURL={(url)=>{this.inputStyleURL(url)}} />
           <UploadBtn uploadedURL={(url)=>{this.inputUploadedURL(url)}}/>
-          <StyleChangeBtn styleURL={this.state.bodyStateStyleURL} uploadedURL={this.state.bodyStateUploadedURL}/>
+          <StyleChangeBtn styleURL={this.state.bodyStateStyleURL} uploadedURL={this.state.bodyStateUploadedURL} changedURL={(url)=>{this.inputChangedURL(url)}}/>
         </div>
       </div>
     );
