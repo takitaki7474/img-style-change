@@ -45,13 +45,21 @@ def post():
 
 @app.route("/change_style", methods=["GET"])
 def change_style():
-    dic = {}
+    output_dic = {}
     #urls = request.query_string.decode('utf-8').split('&')
     style_url = request.args.get("style_url")
     uploaded_url = request.args.get("uploaded_url")
-    dic["style_url"] = style_url
-    dic["uploaded_url"] = uploaded_url
-    print(dic)
+
+    style_url_list = style_url.split("/")
+    style_url_list[0] = "."
+    style_url = "/".join(style_url_list)
+
+    uploaded_url_list = uploaded_url.split("/")
+    uploaded_url_list[0] = "."
+    uploaded_url = "/".join(uploaded_url_list)
+
+    changed_file_path = style_change.style_change(uploaded_url, style_url)
+    output_dic["changed_file_path"] = changed_file_path
 
     return jsonify(dic)
 
