@@ -54,21 +54,12 @@ class UploadBtn extends React.Component {
   }
 
   render() {
-    let loading;
-    if(this.state.isLoading) {
-      loading = (
-        <h1>
-          loading...
-        </h1>
-      );
-    }
     return(
       <div className="upload-form">
         <label className="button-item">
           アップロード
           <input className="form-button" type="file" name="file-submit" onChange={this.handleInputValue} />
         </label>
-        {loading}
       </div>
     );
   }

@@ -40,8 +40,6 @@ class StyleChangeBtn extends React.Component {
   }
 
   render(){
-    console.log(this.props.styleURL);
-    console.log(this.props.uploadedURL);
     return(
       <div className="button-item" onClick={this.styleChange}>
         <p>スタイル変換</p>

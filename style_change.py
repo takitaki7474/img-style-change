@@ -11,7 +11,7 @@ from numpy import random
 from PIL import Image
 import datetime
 
-uses_device = 0			# GPU#0を使用
+uses_device = -1			# GPU#0を使用
 figure_rate = 0.02		# 画像形状の割合
 figure_layers = ["conv3_3", "conv4_3"]	# 7層目、10層目を画像形状抽出用に使う
 style_layers = ["conv1_2", "conv2_2", "conv3_3", "conv4_3"]	# 2層目〜10層目をスタイル抽出用に使う
@@ -107,18 +107,6 @@ class ANAASUpdater(training.StandardUpdater):
 		optimizer.update(optimizer.target)
 
 # 入力ファイル
-"""
-original_file = 'original.png'
-if len(sys.argv) >= 2:
-	original_file = str(sys.argv[1])
-style_file = 'style.png'
-if len(sys.argv) >= 3:
-	style_file = str(sys.argv[2])
-# 出力ファイル
-output_file = 'result.png'
-if len(sys.argv) >= 4:
-	output_file = str(sys.argv[3])
-"""
 
 def style_change(original_file, style_file):
 	# 入力画像を開く
