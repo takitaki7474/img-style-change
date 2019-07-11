@@ -16,7 +16,9 @@ class StyleChangeBtn extends React.Component {
     } else if (this.props.uploadedURL == '') {
       window.alert("画像をアップロードしてください!!");
     } else {
-      this.setState({isLoading: true});
+      this.setState({isLoading: true},()=>{
+        this.props.isLoading(this.state.isLoading);
+      });
 
       axios.get(
         'http://localhost:5000/change_style',{
@@ -27,9 +29,12 @@ class StyleChangeBtn extends React.Component {
       }).then(result =>{
         this.setState({isLoading: false},()=>{
           this.props.changedURL(result.data.changed_file_path);
+          this.props.isLoading(this.state.isLoading);
         });
       }).catch(error => {
-        this.setState({isLoading: false});
+        this.setState({isLoading: false},()=>{
+          this.props.isLoading(this.state.isLoading);
+        });
       })
     }
   }

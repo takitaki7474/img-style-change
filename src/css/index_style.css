@@ -74,6 +74,10 @@
   box-shadow: 0 0 8px #000;
 }
 
+.changing-text {
+  font-size: 30px;
+}
+
 /*ボタン*/
 
 .button-items-box {

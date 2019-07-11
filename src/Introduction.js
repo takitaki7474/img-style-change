@@ -29,8 +29,11 @@ class Introduction extends React.Component {
         </div>
       );
     }
-
-    if (this.props.isChanged) {
+    if (this.props.isLoading) {
+      displayChangedImg = (
+        <div className="changing-text">Changing Image ...</div>
+      )
+    }else if (this.props.isChanged) {
       displayChangedImg = (
         <div className="selected-img">
           <p className="selected-img-text">Changed Image</p>
