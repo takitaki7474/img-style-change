@@ -47,12 +47,12 @@ class Introduction extends React.Component {
         <div className="intro-main">
           <div className="selected-img">
             <p className="selected-img-text">Style</p>
-            <img className="display-img" src="/src/images/cat.png"/>
+            <img className="display-img" src="/src/images/index.jpeg"/>
           </div>
           <div className="operator-box"><p className="operator">×</p></div>
           <div className="selected-img">
             <p className="selected-img-text">Target Image</p>
-            <img className="display-img" src="/src/images/index.jpeg"/>
+            <img className="display-img" src="/src/images/cat.png"/>
           </div>
           <div className="operator-box"><p className="operator">=</p></div>
           <div className="selected-img">
