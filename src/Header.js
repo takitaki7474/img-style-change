@@ -4,7 +4,7 @@ class Header extends React.Component {
   render() {
     return(
       <div className="header">
-        <div className="header-title">ImageChanger-画像スタイル変換サービス</div>
+        <div className="header-title">StyleChanger-画像スタイル変換サービス</div>
       </div>
     );
   }
