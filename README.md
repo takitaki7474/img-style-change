@@ -15,7 +15,7 @@ I used the learned model VGG16 for feature extraction.
 The back end is implemented using Flask and Chainer, and the front end is implemented using React.js.
 
 ## Demo
-![StyleChangerDemo](https://github.com/takitaki7474/algorithm-research/blob/master/gifs_and_images/sytle_changer.gif)
+![StyleChangerDemo](https://github.com/takitaki7474/img-style-change/blob/demo-images/demo-images/demo.gif)
   
 
-![StyleChangerDemo2](https://github.com/takitaki7474/algorithm-research/blob/master/gifs_and_images/style_change.png)
+![StyleChangerDemo2](https://github.com/takitaki7474/img-style-change/blob/demo-images/demo-images/demo_image.png)
